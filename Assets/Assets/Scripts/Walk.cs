@@ -18,8 +18,7 @@ public class Walk : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        Debug.Log("X: " + x + " Z: " + z);
-        Vector3 move = new Vector3(x, 0f, z);
+        Vector3 move = transform.right * x + transform.forward * z;
 
         move = Vector3.ClampMagnitude(move, 1f);
 
@@ -32,6 +31,5 @@ public class Walk : MonoBehaviour
         Vector3 velocity = move * speed;
         velocity.y = verticalVelocity;
         controller.Move(velocity * Time.deltaTime);
-        Debug.Log("Position: " + transform.position);
     }
 }

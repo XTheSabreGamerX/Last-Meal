@@ -266,12 +266,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 330585543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 957b1930d677b6c4cbbdf08e8d2bdeca, type: 3}
+  m_Script: {fileID: 11500000, guid: e01e56e900b397a4aa8cd07b9542748b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerCamera
-  target: {fileID: 3523716664920930213}
-  offset: {x: 0, y: 5, z: -7}
-  smoothSpeed: 5
+  m_EditorClassIdentifier: Assembly-CSharp::MouseLook
+  sensitivity: 100
+  playerBody: {fileID: 3523716664920930213}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
