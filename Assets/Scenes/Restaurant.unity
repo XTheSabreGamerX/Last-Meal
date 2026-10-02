@@ -834,6 +834,7 @@ GameObject:
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
+  - component: {fileID: 330585549}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -973,6 +974,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MouseLook
   sensitivity: 300
   playerBody: {fileID: 3523716664920930213}
+--- !u!114 &330585549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7293826c7aad6fb4fbce46f4388667a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteraction
+  interactRange: 3
 --- !u!1 &341305979
 GameObject:
   m_ObjectHideFlags: 0
@@ -4231,8 +4245,6 @@ MonoBehaviour:
   openAngle: -90
   rotationSpeed: 5
   isOpen: 0
-  closedRotation: {x: 0, y: 0, z: 0, w: 0}
-  openRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1098811333
 GameObject:
   m_ObjectHideFlags: 0
@@ -5091,8 +5103,6 @@ MonoBehaviour:
   openAngle: -90
   rotationSpeed: 5
   isOpen: 0
-  closedRotation: {x: 0, y: 0, z: 0, w: 0}
-  openRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!43 &1777459921
 Mesh:
   m_ObjectHideFlags: 0

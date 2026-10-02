@@ -1,27 +1,47 @@
+using System.Collections;
 using UnityEngine;
 
-public class DoorOpen : MonoBehaviour
+public class DoorOpen : MonoBehaviour, IInteraction
 {
     public float openAngle = 90f;
     public float rotationSpeed = 5f;
     public bool isOpen = false;
-    public Quaternion closedRotation;
-    public Quaternion openRotation;
+    private Quaternion closedRotation;
+    private Quaternion openRotation;
+    private Coroutine currentCourotine;
 
     void Start()
     {
-        closedRotation = transform.localRotation;
-        openRotation = Quaternion.Euler(0f, openAngle, 0f) * closedRotation;
+        closedRotation = transform.rotation;
+        openRotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0, openAngle, 0));
     }
 
-    void Update()
+    /*void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            isOpen = !isOpen;
+            if (currentCourotine != null) StopCoroutine(currentCourotine);
+            currentCourotine = StartCoroutine(ToggleDoor());
+        }
+    }*/
+
+    public void Interact()
+    {
+        if (currentCourotine != null) StopCoroutine(currentCourotine);
+        currentCourotine = StartCoroutine(ToggleDoor());
+    }
+
+    private IEnumerator ToggleDoor()
+    {
+        Quaternion targetRotation = isOpen ? closedRotation : openRotation;
+        isOpen = !isOpen;
+
+        while (Quaternion.Angle(transform.rotation, targetRotation) > 0.01f)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+            yield return null;
         }
 
-        Quaternion target = isOpen ? openRotation : closedRotation;
-        transform.localRotation = Quaternion.Lerp(transform.localRotation, target, rotationSpeed * Time.deltaTime);
+        transform.rotation = targetRotation;
     }
 }
