@@ -6,9 +6,22 @@ public class DoorOpen : MonoBehaviour, IInteraction
     public float openAngle = 90f;
     public float rotationSpeed = 5f;
     public bool isOpen = false;
+
     private Quaternion closedRotation;
     private Quaternion openRotation;
     private Coroutine currentCourotine;
+
+    public string doorName = "Fridge";
+    public string GetPrompt()
+    {
+        return isOpen ? "Close " + doorName : "Open " + doorName;
+    }
+
+    public Outline outline;
+    public void SetHighlight(bool off)
+    {
+        outline.enabled = off;
+    }
 
     void Start()
     {
