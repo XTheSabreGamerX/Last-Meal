@@ -18,9 +18,9 @@ public class DoorOpen : MonoBehaviour, IInteraction
     }
 
     public Outline outline;
-    public void SetHighlight(bool off)
+    public void SetHighlight(bool on)
     {
-        outline.enabled = off;
+        outline.enabled = on;
     }
 
     void Start()
@@ -38,7 +38,7 @@ public class DoorOpen : MonoBehaviour, IInteraction
         }
     }*/
 
-    public void Interact()
+    public void Interact(PlayerInventory player)
     {
         if (currentCourotine != null) StopCoroutine(currentCourotine);
         currentCourotine = StartCoroutine(ToggleDoor());

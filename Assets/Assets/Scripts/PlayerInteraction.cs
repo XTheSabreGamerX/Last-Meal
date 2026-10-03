@@ -5,6 +5,7 @@ public class PlayerInteraction : MonoBehaviour
 {
     public float interactRange = 3f;
     public TMP_Text promptText;
+    public PlayerInventory inventory;
 
     private IInteraction current;
     private IInteraction previous;
@@ -21,8 +22,8 @@ public class PlayerInteraction : MonoBehaviour
 
         if (current != previous)
         {
-            previous?.SetHighlight(true);
-            current?.SetHighlight(false);
+            previous?.SetHighlight(false);
+            current?.SetHighlight(true);
             previous = current;
         }
 
@@ -30,7 +31,7 @@ public class PlayerInteraction : MonoBehaviour
 
         if (current != null && Input.GetKeyDown(KeyCode.Mouse0))
         {
-            current.Interact();
+            current.Interact(inventory);
         }
     }
 }
